@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% block header %}
+{% endblock %}
+
+{% block contenido %}
+
+    <!--// Sub Header //-->
+    <div class="kd-subheader">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="subheader-info">
+                        <h1>{{ paquete.nombre }} </h1>
+                        <!-- <p>Morbi euismod euismod consectetur. Donec pharetra, lacus at convallis maximus, arcu quam accumsan diam, et aliquam odio elit gravida mi</p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="kd-content">
+
+        <section class="kd-pagesection" style=" padding: 0px 0px 0px 0px; background: #ffffff; ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="kd-package-detail">
+
+                            <figure class="detail-thumb"><a href="#"><img src="{{ paquete.portada.url }}" alt=""></a>
+                            </figure>
+                            <div class="kd-pkg-info">
+                                <ul>
+                                    <li><i class="fa fa-map-marker"></i>
+                                        <strong>Duracion:</strong> {{ paquete.duracion }} dias.
+                                    </li>
+                                    <li><i class="fa fa-paper-plane"></i>
+                                        <strong>Ubicacion:</strong> {{ paquete.destino.ubicacion }}</li>
+                                    <li><i class="fa fa-ticket"></i>
+                                        <strong>Cupos:</strong> {{ paquete.disponibilidad }}</li>
+                                    <li><i class="fa fa-tag"></i> <strong>Precio:</strong> {{ paquete.precio }}</li>
+                                    {% if paquete.isoferta %}
+                                        <li style="color:red"><i class="fa fa-tag"></i>
+                                            <strong>OFERTA:</strong> {{ paquete.precio_oferta }}</li>
+
+                                    {% endif %}
+                                </ul>
+                                <a href="#" class="kd-booking-btn thbg-color">RESERVALO AHORA</a>
+                            </div>
+                            <blockquote>{{ paquete.frase }}
+                            </blockquote>
+                            <div class="kd-rich-editor">
+                                <p>{{ paquete.descripcion }}</p>
+                                <!--// Image Frame //-->
+                                <div class="kd-imageframe">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <figure><a href="#"><img src="{{ paquete.imagen.url }}" alt=""></a>
+                                                <a href="#" class="thumb-hover"><i class="fa fa-play-circle-o"></i></a>
+                                            </figure>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {% for i in paquete.itinerario_set.all %}
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="kd-imageframe">
+                                            <div class="row">
+                                                <div class="col-md-5"><a class="frame-thumb" href="#"><img
+                                                        src="{{ i.imagen.url }}" alt=""></a></div>
+                                                <div class="col-md-7">
+                                                    <h1>{{ i.nombre }}</h1>
+                                                    <p>{{ i.descripcion }} </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                            <!--// User Tag //-->
+                            <div class="kd-user-tag">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="kd-tag">
+                                            <span><i class="fa fa-tag"></i> Tags:</span>
+                                            <ul>
+                                                {% for i in paquete.tag.all %}
+                                                    <li><a href="#">{{ i.nombre }}</a></li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="kd-social-network">
+                                            <ul>
+                                                <li><a href="#" data-original-title="Facebook"><i
+                                                        class="fa fa-facebook"></i></a></li>
+                                                <li><a href="#" data-original-title="Twitter"><i
+                                                        class="fa fa-twitter"></i></a></li>
+                                                <li><a href="#" data-original-title="Tumblr"><i
+                                                        class="fa fa-tumblr"></i></a></li>
+                                                <li><a href="#" data-original-title="Dribbble"><i
+                                                        class="fa fa-dribbble"></i></a></li>
+                                                <li><a href="#" data-original-title="Youtube"><i
+                                                        class="fa fa-youtube"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--// User Tag //-->
+
+                            <div class="kd-related-post kd-package-post">
+                                <div class="kd-section-title"><h2>Other packages</h2></div>
+                                <ul class="row">
+                                    {% for i in paquetesrelacionados %}
+                                        <li class="col-md-4">
+                                            <figure><a href="#"><img src="{{ i.imagen.url }}" alt=""></a>
+                                                <figcaption><a href="#">{{ i.nombre }}</a></figcaption>
+                                            </figure>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <!--// Content //-->
+
+{% endblock %}
+{% block script %}
+
+
+{% endblock %}

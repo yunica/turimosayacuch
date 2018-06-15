@@ -45,12 +45,13 @@
                 <form>
                     <ul>
                         <li>
-                            <select>
-                                <option>France</option>
-                                <option>Germany</option>
-                                <option>London</option>
-                                <option>Cyprus</option>
-                            </select>
+                            {% if destino %}
+                                <select>
+                                    {% for i in destino %}
+                                        <option value="{{ i.id }}">{{ i.nombre }}</option>
+                                    {% endfor %}
+                                </select>
+                            {% endif %}
                         </li>
                         <li>
                             <div class="input-group input-append date">
@@ -104,45 +105,30 @@
                     <div class="col-md-12">
                         <div class="kd-package-list">
                             <div class="row">
-                                <article class="col-md-4">
-                                    <figure><a href="#"><img src="{% static 'extraimages/pakege2.jpg' %}" alt=""></a>
-                                        <figcaption>
-                                            <span class="package-price thbg-color">$7,600</span>
-                                            <div class="kd-bottomelement">
-                                                <h5><a href="#">Paris and Bordeaux</a></h5>
-                                                <div class="days-counter"><span>5</span> <br> dias</div>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </article>
-                                <article class="col-md-4">
-                                    <figure><a href="#"><img src="{% static 'extraimages/pakege3.jpg' %}" alt=""></a>
-                                        <figcaption>
-                                            <span class="package-price thbg-color">$7,600</span>
-                                            <div class="kd-bottomelement">
-                                                <h5><a href="#">Paris and Bordeaux</a></h5>
-                                                <div class="days-counter" style="background-color: #00c4d6;">
-                                                    <span>15</span>
-                                                    <br> days
-                                                </div>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </article>
-                                <article class="col-md-4">
-                                    <figure><a href="#"><img src="{% static 'extraimages/pakege4.jpg' %}" alt=""></a>
-                                        <figcaption>
-                                            <span class="package-price thbg-color">$7,600</span>
-                                            <div class="kd-bottomelement">
-                                                <h5><a href="#">Paris and Bordeaux</a></h5>
-                                                <div class="days-counter" style="background-color: #e61010;">
-                                                    <span>15</span>
-                                                    <br> days
-                                                </div>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </article>
+                                {% if paquete %}
+                                    {% for i in paquete %}
+                                        <article class="col-md-4">
+                                            <figure><a href="#"><img src="{{ i.imagen.url }}"
+                                                                     alt=""></a>
+                                                <figcaption>
+                                                    {% if i.isoferta %}
+                                                        <span class="package-price thbg-color">S/. {{ i.precio_oferta }}</span>
+
+                                                    {% else %}
+                                                        <span class="package-price thbg-color">S/. {{ i.precio }}</span>
+
+                                                    {% endif %}
+                                                    <div class="kd-bottomelement">
+                                                        <h5><a href="{% url 'viajes:paquetes_detail'  i.id  %}">{{ i.nombre }}</a></h5>
+                                                        <div class="days-counter"><span>{{ i.duracion }}</span> <br>
+                                                            dias
+                                                        </div>
+                                                    </div>
+                                                </figcaption>
+                                            </figure>
+                                        </article>
+                                    {% endfor %}
+                                {% endif %}
                             </div>
                             <div class="kd-loadsection"><a href="#" class="kd-loadmorebtn">Ver todos</a></div>
                         </div>
@@ -279,7 +265,6 @@
         <section class="kd-pagesection" style=" padding: 20px 0px 0px 0px; background: #fcfcfc; ">
             <div class="container">
                 <div class="row">
-
                     <div class="col-md-12">
                         <div class="kd-modrentitle thememargin">
                             <h3>Nuestras fotografias</h3>
@@ -293,7 +278,6 @@
                                 quis pretium.</p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -307,42 +291,27 @@
 
                     <div class="col-md-12">
 
-                        <!--// Gallery //-->
                         <div class="kd-gallery">
                             <ul class="row">
-                                <li class="col-md-4">
-                                    <figure><a href="#"><img src="{% static 'extraimages/trip-gallery1.jpg' %}" alt=""></a>
-                                        <figcaption><a href="#" class="fa fa-plus"></a></figcaption>
-                                    </figure>
-                                    <div class="kd-galleryinfo">
-                                        <h5><a href="#">Paris and Bordeaux</a></h5>
-                                        <span>215 PHOTOS</span>
-                                    </div>
-                                </li>
-                                <li class="col-md-4">
-                                    <figure><a href="#"><img src="{% static 'extraimages/trip-gallery2.jpg' %}" alt=""></a>
-                                        <figcaption><a href="#" class="fa fa-plus"></a></figcaption>
-                                    </figure>
-                                    <div class="kd-galleryinfo">
-                                        <h5><a href="#">Parthenon Temple</a></h5>
-                                        <span>150 PHOTOS</span>
-                                    </div>
-                                </li>
-                                <li class="col-md-4">
-                                    <figure><a href="#"><img src="{% static 'extraimages/trip-gallery3.jpg' %}" alt=""></a>
-                                        <figcaption><a href="#" class="fa fa-plus"></a></figcaption>
-                                    </figure>
-                                    <div class="kd-galleryinfo">
-                                        <h5><a href="#">Tropical Paradise</a></h5>
-                                        <span>110 PHOTOS</span>
-                                    </div>
-                                </li>
+
+                                {% if itinerario %}
+                                    {% for i in itinerario %}
+                                            <li class="col-md-4">
+                                                <figure>
+                                                    <a href="#"><img src="{{ i.imagen.url }}" alt=""></a>
+                                                    <figcaption>
+                                                        <a href="#" class="fa fa-plus"></a>
+                                                    </figcaption>
+                                                </figure>
+                                                <div class="kd-galleryinfo">
+                                                    <h5><a href="#">{{ i.nombre }}</a></h5>
+                                                </div>
+                                            </li>
+                                    {% endfor %}
+                                {% endif %}
                             </ul>
                         </div>
-                        <!--// Gallery //-->
-
                     </div>
-
                 </div>
             </div>
         </section>
