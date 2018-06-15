@@ -2376,7 +2376,7 @@ pre {
 	float: left;
 	width: 100%;
 	background-color: #343537;
-	background: url(images/footer.png);
+	background: url('../images/footer.png');
 	background-size: cover;
 	padding: 50px 0px;
 	position: relative;

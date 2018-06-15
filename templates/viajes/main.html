@@ -42,16 +42,26 @@
         <div class="kd-tourform">
             <div class="container">
                 <a href="#" class="formbtn">Busca tu destino</a>
-                <form>
+                <form method="post" action="{% url 'viajes:paquetes' %}">
+                    {% csrf_token %}
                     <ul>
                         <li>
                             {% if destino %}
-                                <select>
+                                <select id="selectdestino" name="selectiondestino">
                                     {% for i in destino %}
                                         <option value="{{ i.id }}">{{ i.nombre }}</option>
                                     {% endfor %}
                                 </select>
                             {% endif %}
+                        </li>
+                        <li>
+                            <label>
+                                <select id="monto" name="monto">
+                                    {% for i in tag %}
+                                        <option value="{{ i.id }}">{{ i.nombre }}</option>
+                                    {% endfor %}
+                                </select>
+                            </label>
                         </li>
                         <li>
                             <div class="input-group input-append date">
@@ -61,18 +71,11 @@
                             </div>
 
                         </li>
-
-                        <li>
-                            <label>
-                                <select>
-                                    <option value="100">S/. 100</option>
-                                    <option value="500">S/. 500</option>
-                                    <option value="1000">S/. 1000</option>
-                                    <option value="5000">S/. 5000</option>
-                                </select>
-                            </label>
+                        <li hidden>
+                            <input name="tipo" value="1" type="text"/>
                         </li>
-                        <li><input type="submit" class="thbg-color" value="Buscar ahora"></li>
+                        <li><input type="submit" id="consulta" onclick="enviardatos()" class="thbg-color"
+                                   value="Buscar ahora"></li>
                     </ul>
                 </form>
             </div>
@@ -119,7 +122,9 @@
 
                                                     {% endif %}
                                                     <div class="kd-bottomelement">
-                                                        <h5><a href="{% url 'viajes:paquetes_detail'  i.id  %}">{{ i.nombre }}</a></h5>
+                                                        <h5>
+                                                            <a href="{% url 'viajes:paquetes_detail'  i.id %}">{{ i.nombre }}</a>
+                                                        </h5>
                                                         <div class="days-counter"><span>{{ i.duracion }}</span> <br>
                                                             dias
                                                         </div>
@@ -296,17 +301,17 @@
 
                                 {% if itinerario %}
                                     {% for i in itinerario %}
-                                            <li class="col-md-4">
-                                                <figure>
-                                                    <a href="#"><img src="{{ i.imagen.url }}" alt=""></a>
-                                                    <figcaption>
-                                                        <a href="#" class="fa fa-plus"></a>
-                                                    </figcaption>
-                                                </figure>
-                                                <div class="kd-galleryinfo">
-                                                    <h5><a href="#">{{ i.nombre }}</a></h5>
-                                                </div>
-                                            </li>
+                                        <li class="col-md-4">
+                                            <figure>
+                                                <a href="#"><img src="{{ i.imagen.url }}" alt=""></a>
+                                                <figcaption>
+                                                    <a href="#" class="fa fa-plus"></a>
+                                                </figcaption>
+                                            </figure>
+                                            <div class="kd-galleryinfo">
+                                                <h5><a href="#">{{ i.nombre }}</a></h5>
+                                            </div>
+                                        </li>
                                     {% endfor %}
                                 {% endif %}
                             </ul>
@@ -472,5 +477,7 @@
             }, function (start, end, label) {
                 console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
             });
-        });    </script>
+
+        });
+    </script>
 {% endblock %}
