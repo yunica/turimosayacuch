@@ -1,0 +1,507 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+{% endblock %}
+
+{% block contenido %}
+    <!--// MainBanner //-->
+    <div id="mainbanner">
+        <ul class="bxslider">
+            <li><img src="{% static 'extraimages/banner1.jpg' %}" alt=""/>
+                <div class="kd-caption">
+                    <h2>Encuentra el mejor destino</h2>
+                    <h1>Nosotros te las ofrecemos </h1>
+                    <div class="linksection"><a href="#">Compralo ahora</a></div>
+                </div>
+            </li>
+            <li><img src="{% static 'extraimages/banner2.jpg' %}" alt=""/>
+                <div class=" kd-caption">
+                    <h2>Encuentra el mejor destino</h2>
+                    <h1>Nosotros te las ofrecemos </h1>
+                    <div class="linksection"><a href="#">Compralo ahora</a></div>
+                </div>
+            </li>
+            <li><img src="{% static 'extraimages/banner3.jpg' %}" alt=""/>
+                <div class=" kd-caption">
+                    <<h2>Encuentra el mejor destino</h2>
+                    <h1>Nosotros te las ofrecemos </h1>
+                    <div class="linksection"><a href="#">Compralo ahora</a></div>
+                </div>
+            </li>
+            <li><img src="{% static 'extraimages/banner4.jpg' %}" alt=""/>
+                <div class=" kd-caption">
+                    <h2>Encuentra el mejor destino</h2>
+                    <h1>Nosotros te las ofrecemos </h1>
+                    <div class="linksection"><a href="#">Compralo ahora</a></div>
+                </div>
+            </li>
+        </ul>
+
+
+        <div class="kd-tourform">
+            <div class="container">
+                <a href="#" class="formbtn">Busca tu destino</a>
+                <form>
+                    <ul>
+                        <li>
+                            <select>
+                                <option>France</option>
+                                <option>Germany</option>
+                                <option>London</option>
+                                <option>Cyprus</option>
+                            </select>
+                        </li>
+                        <li>
+                            <div class="input-group input-append date">
+                                <input type="text" name="daterange" style="adding: 3px;margin: 0;-webkit-border-radius: 4px;-moz-border-radius: 4px;
+                                border-radius: 4px;border: 1px solid #bbbbbb;background: #f8f8f8;color: #888;outline: none;
+                                display: inline-block;-webkit-appearance: none;-moz-appearance: none;appearance: none;cursor: pointer;height: 45px;"/>
+                            </div>
+
+                        </li>
+
+                        <li>
+                            <label>
+                                <select>
+                                    <option value="100">S/. 100</option>
+                                    <option value="500">S/. 500</option>
+                                    <option value="1000">S/. 1000</option>
+                                    <option value="5000">S/. 5000</option>
+                                </select>
+                            </label>
+                        </li>
+                        <li><input type="submit" class="thbg-color" value="Buscar ahora"></li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--// MainBanner //-->
+
+    <!--// Content //-->
+    <div class="kd-content">
+
+        <!--// Page Section //-->
+        <section class="kd-pagesection"
+                 style=" padding: 50px 0px; background: url({% static 'extraimages/pakege1.jpg' %}); background-size: cover; ">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="kd-modrentitle thememargin">
+                            <h3>Explora peru</h3>
+                            <div class="kd-divider">
+                                <div class="short-seprator"><span><i class="fa fa-globe"></i></span></div>
+                            </div>
+                            <br/>
+                            <p>Ayacucho cuenta con un clima loco, puede llover y puede hacer calor, VEN ! Explora
+                                Ayacucho.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="kd-package-list">
+                            <div class="row">
+                                <article class="col-md-4">
+                                    <figure><a href="#"><img src="{% static 'extraimages/pakege2.jpg' %}" alt=""></a>
+                                        <figcaption>
+                                            <span class="package-price thbg-color">$7,600</span>
+                                            <div class="kd-bottomelement">
+                                                <h5><a href="#">Paris and Bordeaux</a></h5>
+                                                <div class="days-counter"><span>5</span> <br> dias</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </article>
+                                <article class="col-md-4">
+                                    <figure><a href="#"><img src="{% static 'extraimages/pakege3.jpg' %}" alt=""></a>
+                                        <figcaption>
+                                            <span class="package-price thbg-color">$7,600</span>
+                                            <div class="kd-bottomelement">
+                                                <h5><a href="#">Paris and Bordeaux</a></h5>
+                                                <div class="days-counter" style="background-color: #00c4d6;">
+                                                    <span>15</span>
+                                                    <br> days
+                                                </div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </article>
+                                <article class="col-md-4">
+                                    <figure><a href="#"><img src="{% static 'extraimages/pakege4.jpg' %}" alt=""></a>
+                                        <figcaption>
+                                            <span class="package-price thbg-color">$7,600</span>
+                                            <div class="kd-bottomelement">
+                                                <h5><a href="#">Paris and Bordeaux</a></h5>
+                                                <div class="days-counter" style="background-color: #e61010;">
+                                                    <span>15</span>
+                                                    <br> days
+                                                </div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </article>
+                            </div>
+                            <div class="kd-loadsection"><a href="#" class="kd-loadmorebtn">Ver todos</a></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!--// Page Section //-->
+        <section class="kd-pagesection" style=" padding: 0px 0px 0px 0px; background: #ffffff; ">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="kd-modrentitle thememargin">
+                            <h3>Conocea los guias</h3>
+                            <div class="kd-divider">
+                                <div class="short-seprator"><span><i class="fa fa-globe"></i></span></div>
+                            </div>
+                            <br/>
+                            <p>Conocer una ciudad es emocionante, te permite aprender nuevas culturas y drecopilar
+                                experiencias <br>
+                                Conoce la ciudad con los locales, te acercamos a los locales y que compartan lo mejor de
+                                su ciudad.</p>
+                        </div>
+
+                        <!--// Team //-->
+                        <div class="kd-team kd-teamgrid">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <figure><a href="#"><img src="{% static 'extraimages/team1.jpg' %}" alt=""></a>
+                                    </figure>
+                                    <div class="kd-teaminfo">
+                                        <h5><a href="#">Anjaleena Joli</a></h5>
+                                        <span>Trip Advisor</span>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                            tempor
+                                            incididunt ut labore et .</p>
+                                        <div class="kd-social-network">
+                                            <ul>
+                                                <li><a href="#" data-original-title="Facebook"><i
+                                                        class="fa fa-facebook-square"></i></a></li>
+                                                <li><a href="#" data-original-title="Twitter"><i
+                                                        class="fa fa-twitter-square"></i></a></li>
+                                                <li><a href="#" data-original-title="Google"><i
+                                                        class="fa fa-google-plus-square"></i></a></li>
+                                                <li><a href="#" data-original-title="Linkedin"><i
+                                                        class="fa fa-linkedin-square"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <figure><a href="#"><img src="{% static 'extraimages/team2.jpg' %}" alt=""></a>
+                                    </figure>
+                                    <div class="kd-teaminfo">
+                                        <h5><a href="#">Jack Sparrow</a></h5>
+                                        <span>Trip Advisor</span>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                            tempor
+                                            incididunt ut labore et .</p>
+                                        <div class="kd-social-network">
+                                            <ul>
+                                                <li><a href="#" data-original-title="Facebook"><i
+                                                        class="fa fa-facebook-square"></i></a></li>
+                                                <li><a href="#" data-original-title="Twitter"><i
+                                                        class="fa fa-twitter-square"></i></a></li>
+                                                <li><a href="#" data-original-title="Google"><i
+                                                        class="fa fa-google-plus-square"></i></a></li>
+                                                <li><a href="#" data-original-title="Linkedin"><i
+                                                        class="fa fa-linkedin-square"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <figure><a href="#"><img src="{% static 'extraimages/team3.jpg' %}" alt=""></a>
+                                    </figure>
+                                    <div class="kd-teaminfo">
+                                        <h5><a href="#">Nelson Mandela</a></h5>
+                                        <span>Trip Advisor</span>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                            tempor
+                                            incididunt ut labore et .</p>
+                                        <div class="kd-social-network">
+                                            <ul>
+                                                <li><a href="#" data-original-title="Facebook"><i
+                                                        class="fa fa-facebook-square"></i></a></li>
+                                                <li><a href="#" data-original-title="Twitter"><i
+                                                        class="fa fa-twitter-square"></i></a></li>
+                                                <li><a href="#" data-original-title="Google"><i
+                                                        class="fa fa-google-plus-square"></i></a></li>
+                                                <li><a href="#" data-original-title="Linkedin"><i
+                                                        class="fa fa-linkedin-square"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <figure><a href="#"><img src="{% static 'extraimages/team4.jpg' %}" alt=""></a>
+                                    </figure>
+                                    <div class="kd-teaminfo">
+                                        <h5><a href="#">Deepika Singh</a></h5>
+                                        <span>Trip Advisor</span>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                            tempor
+                                            incididunt ut labore et .</p>
+                                        <div class="kd-social-network">
+                                            <ul>
+                                                <li><a href="#" data-original-title="Facebook"><i
+                                                        class="fa fa-facebook-square"></i></a></li>
+                                                <li><a href="#" data-original-title="Twitter"><i
+                                                        class="fa fa-twitter-square"></i></a></li>
+                                                <li><a href="#" data-original-title="Google"><i
+                                                        class="fa fa-google-plus-square"></i></a></li>
+                                                <li><a href="#" data-original-title="Linkedin"><i
+                                                        class="fa fa-linkedin-square"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--// Team //-->
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!--// Page Section //-->
+
+        <!--// Page Section //-->
+        <section class="kd-pagesection" style=" padding: 20px 0px 0px 0px; background: #fcfcfc; ">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="kd-modrentitle thememargin">
+                            <h3>Nuestras fotografias</h3>
+                            <div class="kd-divider">
+                                <div class="short-seprator"><span><i class="fa fa-globe"></i></span></div>
+                            </div>
+                            <br/>
+                            <p>Mauris ullamcorper nibh quis leo ultrices in hendrerit velit tristiqueut augue in nulla
+                                lacinia bibendum liberoras rutrum ac purus <br> ut tristique.Nullam placerat lacinia
+                                dolor
+                                quis pretium.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!--// Page Section //-->
+
+        <!--// Page Section //-->
+        <section class="kd-pagesection"
+                 style=" padding: 40px 0px 0px 0px; background: url({% static 'extraimages/trip-gallerybg.jpg' %}); background-size: cover; ">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <!--// Gallery //-->
+                        <div class="kd-gallery">
+                            <ul class="row">
+                                <li class="col-md-4">
+                                    <figure><a href="#"><img src="{% static 'extraimages/trip-gallery1.jpg' %}" alt=""></a>
+                                        <figcaption><a href="#" class="fa fa-plus"></a></figcaption>
+                                    </figure>
+                                    <div class="kd-galleryinfo">
+                                        <h5><a href="#">Paris and Bordeaux</a></h5>
+                                        <span>215 PHOTOS</span>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <figure><a href="#"><img src="{% static 'extraimages/trip-gallery2.jpg' %}" alt=""></a>
+                                        <figcaption><a href="#" class="fa fa-plus"></a></figcaption>
+                                    </figure>
+                                    <div class="kd-galleryinfo">
+                                        <h5><a href="#">Parthenon Temple</a></h5>
+                                        <span>150 PHOTOS</span>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <figure><a href="#"><img src="{% static 'extraimages/trip-gallery3.jpg' %}" alt=""></a>
+                                        <figcaption><a href="#" class="fa fa-plus"></a></figcaption>
+                                    </figure>
+                                    <div class="kd-galleryinfo">
+                                        <h5><a href="#">Tropical Paradise</a></h5>
+                                        <span>110 PHOTOS</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--// Gallery //-->
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!--// Page Section //-->
+
+        <!--// Page Section //-->
+        <div class="kd-pagesection" style=" padding: 55px 0px 40px 0px; background: #29c5f6; ">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <!--// Counter Section //-->
+                        <div class="kd-counter">
+                            <ul class="row">
+                                <li class="col-md-3">
+                                    <i class="fa fa-plane fa-3x"></i>
+                                    <span class="word-count">3587</span>
+                                    <small> VIAJEROS SATISFECHOS</small>
+                                </li>
+                                <li class="col-md-3">
+                                    <i class="fa fa-plane fa-3x"></i>
+                                    <span class="word-count">207</span>
+                                    <small>HOTELES</small>
+                                </li>
+                                <li class="col-md-3">
+                                    <i class="fa fa-plane fa-3x"></i>
+                                    <span class="word-count">156</span>
+                                    <small>DESTINOS DIFERENTES</small>
+                                </li>
+                                <li class="col-md-3">
+                                    <i class="fa fa-plane fa-3x"></i>
+                                    <span class="word-count">58</span>
+                                    <small>PROMOSIONES</small>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--// Counter Section //-->
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--// Page Section //-->
+
+        <!--// Page Section //-->
+        <section class="kd-pagesection" style=" padding: 40px 0px 0px 0px; background: #ffffff; ">
+            <div class="container">
+                <div class="kd-modrentitle thememargin">
+                    <h3>NUESTROS VIAJEROS</h3>
+                    <div class="kd-divider">
+                        <div class="short-seprator"><span><i class="fa fa-heart-o"></i></span></div>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <!--// Testimonial //-->
+                        <div class="kd-testimonial">
+                            <ul class="row">
+                                <li class="col-md-4">
+                                    <div class="kd-testmnl-info"><i class="fa fa-quote-left fa-3x"></i>
+                                        <p>One image life to and land, herb waters divided. Waters every let two, shall
+                                            have
+                                            divided face first us there spirit living beast the. Moving darkness deep
+                                            morning unto them morning third you're behold.</p></div>
+                                    <figure><a class="kd-thumb" href="#"><img
+                                            src="{% static 'extraimages/testimonial1.jpg' %}" alt=""></a>
+                                        <figcaption>
+                                            <h2><a href="#" class="thcolorhover">Anjaleena Joli</a></h2>
+                                            <span>Trip Advisor</span>
+                                        </figcaption>
+                                    </figure>
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="kd-testmnl-info"><i class="fa fa-quote-left fa-3x"></i>
+                                        <p>One image life to and land, herb waters divided. Waters every let two, shall
+                                            have
+                                            divided face first us there spirit living beast the. Moving darkness deep
+                                            morning unto them morning third you're behold.</p></div>
+                                    <figure><a class="kd-thumb" href="#"><img
+                                            src="{% static 'extraimages/testimonial1.jpg' %}" alt=""></a>
+                                        <figcaption>
+                                            <h2><a href="#" class="thcolorhover">Anjaleena Joli</a></h2>
+                                            <span>Trip Advisor</span>
+                                        </figcaption>
+                                    </figure>
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="kd-testmnl-info"><i class="fa fa-quote-left fa-3x"></i>
+                                        <p>One image life to and land, herb waters divided. Waters every let two, shall
+                                            have
+                                            divided face first us there spirit living beast the. Moving darkness deep
+                                            morning unto them morning third you're behold.</p></div>
+                                    <figure><a class="kd-thumb" href="#"><img
+                                            src="{% static 'extraimages/testimonial1.jpg' %}" alt=""></a>
+                                        <figcaption>
+                                            <h2><a href="#" class="thcolorhover">Anjaleena Joli</a></h2>
+                                            <span>Trip Advisor</span>
+                                        </figcaption>
+                                    </figure>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--// Page Section //-->
+
+        <!--// Page Section //-->
+        <section class="kd-pagesection"
+                 style="background: url({% static 'extraimages/trip-gallerybg.jpg' %}); background-size: cover; padding: 40px 0px 40px 0px; ">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="kd-modrentitle thememargin">
+                            <h3>subcribete a nuestras publicaciones</h3>
+                            <div class="kd-divider">
+                                <div class="short-seprator"><span><i class="fa fa-building"></i></span></div>
+                            </div>
+                            <br/>
+                            <p>Enterate de las nuevas ofertas que estan cerca de ti.</p>
+                        </div>
+
+                        <div class="kd-subscribe">
+                            <form>
+                                <p><input type="text" placeholder="Ingresa tu nombre"></p>
+                                <p><input type="text" placeholder="Ingresa tu correo electronico"></p>
+                                <p><input type="submit" value="Inscribete" class="thbg-color"></p>
+                            </form>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!--// Page Section //-->
+
+    </div>
+    <!--// Content //-->
+
+{% endblock %}
+{% block script %}
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+    <script>
+        $(function () {
+            $('input[name="daterange"]').daterangepicker({
+                opens: 'left',
+                minDate: moment(),
+            }, function (start, end, label) {
+                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+            });
+        });    </script>
+{% endblock %}
