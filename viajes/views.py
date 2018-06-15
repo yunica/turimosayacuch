@@ -16,6 +16,26 @@ def home(request):
     })
 
 
+def galeria(request):
+    destino = Destino.objects.filter(estado=True)
+    paquete = Itinerario.objects.filter(estado=True)
+
+    return render(request, 'viajes/galeria.html', {
+        'destino': destino,
+        'paquete': paquete,
+    })
+
+
+def galeria_id(request, id=None):
+    destino = Destino.objects.filter(estado=True)
+    paquete = Itinerario.objects.filter(estado=True, paquete__destino_id=id)
+
+    return render(request, 'viajes/galeria.html', {
+        'destino': destino,
+        'paquete': paquete,
+    })
+
+
 def destino(request):
     destino = Destino.objects.filter(estado=True)
     return render(request, 'viajes/destinos.html', {
@@ -25,6 +45,8 @@ def destino(request):
 
 def paquetes(request):
     paquete = Paquete.objects.filter(estado=True)
+    destino = Destino.objects.filter(estado=True)
+
     if request.method == 'POST':
         if request.POST.get('tipo') == "1":
             fecha = request.POST.get('daterange')
@@ -42,12 +64,23 @@ def paquetes(request):
                                              tag__in=[monto])
             print(paquete)
             return render(request, 'viajes/paquetes.html', {
-                'paquete': paquete
+                'paquete': paquete,
+                'destino': destino,
+
             })
     else:
         return render(request, 'viajes/paquetes.html', {
-            'paquete': paquete
+            'paquete': paquete,
+            'destino': destino,
+
         })
+
+
+def paquetes_id(request, id=None):
+    paquete = Paquete.objects.filter(estado=True, destino_id=id)
+    return render(request, 'viajes/paquetes.html', {
+        'paquete': paquete
+    })
 
 
 def paquetes_detail(request, id=None):

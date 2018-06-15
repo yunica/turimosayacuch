@@ -4,7 +4,6 @@
 {% endblock %}
 
 {% block contenido %}
-
     <!--// Sub Header //-->
     <div class="kd-subheader">
         <div class="container">
@@ -12,48 +11,58 @@
                 <div class="col-md-12">
 
                     <div class="subheader-info">
-                        <h1>NUestros Destinos</h1>
+                        <h1>Gallery List</h1>
                         <!-- <p>Morbi euismod euismod consectetur. Donec pharetra, lacus at convallis maximus, arcu quam accumsan diam, et aliquam odio elit gravida mi</p> -->
                     </div>
+                    <div class="kd-breadcrumb">
+                        <ul>{% for i in destino %}
+                            <li><a href="{% url 'viajes:galeria_id' i.id %}">{{ i.nombre }}</a></li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
     <!--// Sub Header //-->
 
+    <!--// Content //-->
     <div class="kd-content">
 
         <!--// Page Section //-->
-        <section class="kd-pagesection" style=" padding: 0px 0px 10px 0px; ">
+        <section class="kd-pagesection" style=" padding: 0px 0px 0px 0px; background: #ffffff; ">
             <div class="container">
                 <div class="row">
+
                     <div class="col-md-12">
-                        <div class="kd-package-list">
-                            <div class="row">
-                                {% if destino %}
-                                    {% for i in destino %}
-                                        <article class="col-md-4">
+
+                        <!--// Gallery //-->
+                        <div class="kd-gallery-list">
+                            <ul class="row">
+                                {% if paquete %}
+                                    {% for i in paquete %}
+                                        <li class="col-md-4">
                                             <figure><a href="#"><img src="{{ i.imagen.url }}" alt=""></a>
-                                                <figcaption>
-                                                    <div class="kd-bottomelement">
-                                                        <h5><a href="{% url 'viajes:paquetes_id' i.id %}">{{ i.nombre }}</a></h5>
-                                                    </div>
-                                                </figcaption>
+                                                <figcaption><h5><a href="#">{{ i.nombre }}
+                                                    en {{ i.paquete.destino.nombre }}</a></h5></figcaption>
                                             </figure>
-                                        </article>
+                                        </li>
                                     {% endfor %}
                                 {% endif %}
-                            </div>
+
+
+                            </ul>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
         <!--// Page Section //-->
 
     </div>
-
-
+    <!--// Content //-->
 
 {% endblock %}
 {% block script %}

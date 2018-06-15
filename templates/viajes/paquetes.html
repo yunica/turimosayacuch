@@ -13,6 +13,12 @@
                     <div class="subheader-info">
                         <h1>Nuestros Paquetes</h1>
                     </div>
+                    <div class="kd-breadcrumb">
+                        <ul>{% for i in destino %}
+                            <li><a href="{% url 'viajes:galeria_id' i.id %}">{{ i.nombre }}</a></li>
+                        {% endfor %}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -41,7 +47,9 @@
 
                                                     {% endif %}
                                                     <div class="kd-bottomelement">
-                                                        <h5><a href="{% url 'viajes:paquetes_detail'  i.id  %}">{{ i.nombre }}</a></h5>
+                                                        <h5>
+                                                            <a href="{% url 'viajes:paquetes_detail'  i.id %}">{{ i.nombre }}</a>
+                                                        </h5>
                                                         <div class="days-counter"><span>{{ i.duracion }}</span> <br>
                                                             dias
                                                         </div>

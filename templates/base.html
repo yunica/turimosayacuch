@@ -166,8 +166,9 @@
     <div class="kd-headbar">
         <div class="container">
             <div class="row">
-                <div class="col-md-3"><a href="{% url 'viajes:home' %}" class="logo"><img src="{% static 'images/logo1.png' %}" height="100px"
-                                                                             alt=""></a></div>
+                <div class="col-md-3"><a href="{% url 'viajes:home' %}" class="logo"><img
+                        src="{% static 'images/logo1.png' %}" height="100px"
+                        alt=""></a></div>
                 <div class="col-md-9">
                     <div class="kd-rightside">
                         <nav class="navbar navbar-default navigation">
@@ -187,10 +188,10 @@
                                     <li><a href="{% url 'viajes:paquetes' %}">Paquetes </a>
                                     </li>
                                     <li>
-                                        <a href="gallery.html">Galeria</a>
+                                        <a href="{% url 'viajes:galeria' %}">Galeria</a>
                                     </li>
 
-                                    <li><a href="contact-us.html">Contactanos</a></li>
+                                    <li><a href="{% url 'viajes:home' %}">Contactanos</a></li>
                                 </ul>
                             </div>
                             <!-- /.navbar-collapse -->
