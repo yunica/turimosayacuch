@@ -10,5 +10,5 @@ urlpatterns = [
     path('galeria/', galeria, name='galeria'),
     path('galeria/<int:id>/', galeria_id, name='galeria_id'),
     path('paquetes_detail/<int:id>/', paquetes_detail, name='paquetes_detail'),
-
+    path('reservar/<int:id>/', reservar, name='reservar_id'),
 ]

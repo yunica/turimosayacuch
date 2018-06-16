@@ -238,7 +238,8 @@
                             </div>
                         </div>
 
-                        <form role="form">
+                        <form role="form" method="post" action="{% url 'viajes:reservar_id'  paquete.id %}">
+                            {% csrf_token  %}
                             <div class="panel panel-primary setup-content" id="step-1">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">Datos Personales</h3>
@@ -258,7 +259,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">Numero de documento</label>
-                                        <input maxlength="100" type="text" required="required" name="numdoc"
+                                        <input maxlength="100" type="number" required="required" name="numdoc" max="8"
                                                class="form-control"
                                                placeholder="Ingrese su numero de dcumento"/>
                                     </div>
@@ -300,7 +301,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">Peso equipaje</label>
-                                        <input maxlength="200" type="text" name="pesoequipaje" class="form-control"
+                                        <input maxlength="200" type="number" name="pesoequipaje" class="form-control"
                                                placeholder="Ingrese el peso de su equipaje"/>
                                     </div>
                                     <div class="form-group">
@@ -320,21 +321,21 @@
                                     <div class="form-group">
                                         <label class="control-label">Modo de pago </label>
                                         <select required="required" class="form-control" name="pago">
-                                            <option value="1">Banca por Internet</option>
-                                            <option value="2">Deposito en agentes</option>
-                                            <option value="3">Pasarelas de pago</option>
+                                            <option value="BancaInternet">Banca por Internet</option>
+                                            <option value="DepositoAgente">Deposito en agentes</option>
+                                            <option value="PasarelaPago">Pasarelas de pago</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">Tengo cupo </label>
-                                        <select required="required" class="form-control" name="pago">
+                                        <select required="required" class="form-control" name="iscupon">
                                             <option value="1">Si</option>
                                             <option value="0">No</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">Codigo del Cupo </label>
-                                        <input maxlength="200" type="text" class="form-control"
+                                        <input maxlength="200" type="text" class="form-control" name="cuponname"
                                                placeholder="Codigo del Cupo"/>
                                     </div>
                                     <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>

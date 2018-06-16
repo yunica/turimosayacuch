@@ -16,7 +16,7 @@ class Destino(models.Model):
     nombre = models.CharField(max_length=255)
     descripcion = models.TextField(null=True, blank=True)
     imagen = models.ImageField(upload_to='destino')
-    ubicacion = models.CharField(max_length=255,null=True, blank=True)
+    ubicacion = models.CharField(max_length=255, null=True, blank=True)
     estado = models.BooleanField(default=True)
 
     def __str__(self):
@@ -68,25 +68,38 @@ class Cupon(models.Model):
     descuento_decimal = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
     descuento_monto = models.PositiveSmallIntegerField(blank=True, null=True)
     isporcentaje = models.BooleanField(default=True)
-    isvalid = models.ForeignKey(Paquete, on_delete=models.CASCADE)
+    isvalid = models.BooleanField(default=True)
+    paquete = models.ForeignKey(Paquete, on_delete=models.CASCADE)
     estado = models.BooleanField(default=True)
 
     def __str__(self):
         return self.nombre
 
 
+class Cliente(models.Model):
+    nombre = models.CharField(max_length=255, null=True, blank=True)
+    apellidos = models.CharField(max_length=255, null=True, blank=True)
+    numdoc = models.CharField(max_length=15, null=True, blank=True)
+    correo = models.CharField(max_length=255, null=True, blank=True)
+    cel = models.CharField(max_length=255, null=True, blank=True)
+    cliente = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+
+
 class Venta(models.Model):
     paquete = models.ForeignKey(Paquete, on_delete=models.CASCADE)
-    cliente = models.ForeignKey(User, on_delete=models.CASCADE)
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=255)
     apellido = models.CharField(max_length=255)
-    descriobservaciones = models.TextField(null=True, blank=True)
+    idequipaje = models.BooleanField(default=False)
+    pedoequipaje = models.DecimalField(max_digits=14, decimal_places=4)
+    descriobservacionesequipaje = models.TextField(null=True, blank=True)
     precio = models.DecimalField(max_digits=14, decimal_places=4)
     precio_final = models.DecimalField(max_digits=14, decimal_places=4)
-    cupon = models.ForeignKey(Cupon, on_delete=models.CASCADE, blank=True)
+    cupon = models.ForeignKey(Cupon, on_delete=models.CASCADE, blank=True, null=True)
     iscupon = models.BooleanField(default=False)
     ispago = models.BooleanField(default=False)
     fecpago = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    metodopago = models.CharField(max_length=25, null=True, blank=True)
     estado = models.BooleanField(default=True)
     fecregistro = models.DateTimeField(auto_now_add=True)
     fecactualizacion = models.DateTimeField(auto_now=True)
