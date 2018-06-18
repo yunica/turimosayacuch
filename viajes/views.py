@@ -7,7 +7,7 @@ from django.db import transaction
 # Create your views here.
 def home(request):
     destino = Destino.objects.filter(estado=True)
-    paquete = Paquete.objects.filter(estado=True)[0:6]
+    paquete = Paquete.objects.filter(estado=True).order_by('?')[0:6]
     tag = Tag.objects.filter(estado=True)
     return render(request, 'viajes/main.html', {
         'destino': destino,
@@ -70,12 +70,23 @@ def paquetes(request):
                 'destino': destino,
 
             })
-    else:
-        return render(request, 'viajes/paquetes.html', {
-            'paquete': paquete,
-            'destino': destino,
+    if request.method == 'GET':
+        if request.GET.get('tipo') == "2":
+            query = str(request.GET.get('buscar')).strip()
+            paquete = Paquete.objects.filter(estado=True, nombre__contains=query)
+            print(paquete)
 
-        })
+            return render(request, 'viajes/paquetes.html', {
+                'paquete': paquete,
+                'destino': destino,
+
+            })
+
+    return render(request, 'viajes/paquetes.html', {
+        'paquete': paquete,
+        'destino': destino,
+
+    })
 
 
 @transaction.atomic

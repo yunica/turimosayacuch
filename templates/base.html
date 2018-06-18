@@ -1,12 +1,12 @@
 {% load static from staticfiles %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ayacucho reserva</title>
+    <title>KIWI TRAVEL & TOURS</title>
 
     <!-- Css Folder -->
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
@@ -210,11 +210,19 @@
                                                 <h2>Busca por destino</h2>
                                             </div>
 
-                                            <form>
-                                                <p><i class="fa fa-search"></i> <input type="text"
-                                                                                       placeholder="Ingresa tu destino">
+                                            <form action="{% url 'viajes:paquetes' %}" method="get">
+                                                {% csrf_token %}
+                                                <p>
+                                                    <i class="fa fa-search"></i>
+                                                    <input type="text" name="buscar" placeholder="Ingresa tu destino" />
                                                 </p>
-                                                <p><input type="submit" value="Buscar" class="thbg-color"></p>
+                                                <p hidden>
+                                                    <input hidden name="tipo" value="2" type="text"
+                                                                 placeholder="Ingresa tu destino" />
+                                                </p>
+                                                <p><input type="submit" value="Buscar" class="thbg-color" />
+                                                </p>
+
                                             </form>
 
                                         </div>
@@ -242,9 +250,12 @@
             <div class="widget col-md-4 kd-textwidget">
                 <div class="kd-widget-title"><h2>Acerca de nosotros</h2></div>
                 <div class="kd-contactinfo">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ullamcorper lorem non est mattis
-                        molestie. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-                        Curae; Aenean convallis nulla sed nisi bibendum, quis vehicula neque vestibulum..</p>
+                    <p>
+                        Perú, el país más rico del mundo, nos invita a descubrir que no es más rico quien más tiene sino
+                        quien más experiencias inolvidables vive. Y para empezar a vivirlas hay que viajar a Perú, un
+                        lugar donde la diversidad y autenticidad de su cultura, naturaleza y gastronomía, guardan la
+                        esencia de la vida misma.
+                        .</p>
                     <!-- <ul>
                       <li><i class="fa fa-map-marker"></i> 360, Galaxy ApartmentNear Rekon Estate, limbasa margnexton lita, Australia</li>
                       <li><i class="fa fa-phone"></i> 1 808 603 6035</li>

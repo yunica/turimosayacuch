@@ -4,8 +4,6 @@
 {% endblock %}
 
 {% block contenido %}
-
-    <!--// Sub Header //-->
     <div class="kd-subheader">
         <div class="container">
             <div class="row">
@@ -21,7 +19,6 @@
     </div>
 
     <div class="kd-content">
-
         <section class="kd-pagesection" style=" padding: 0px 0px 0px 0px; background: #ffffff; ">
             <div class="container">
                 <div class="row">
@@ -259,7 +256,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">Numero de documento</label>
-                                        <input maxlength="100" type="number" required="required" name="numdoc" max="8"
+                                        <input maxlength="100" type="number" required="required" name="numdoc"
                                                class="form-control"
                                                placeholder="Ingrese su numero de dcumento"/>
                                     </div>
@@ -356,7 +353,6 @@
                             </div>
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -365,18 +361,14 @@
 {% block script %}
     <script>
         $(document).ready(function () {
-
             var navListItems = $('div.setup-panel div a'),
                 allWells = $('.setup-content'),
                 allNextBtn = $('.nextBtn');
-
             allWells.hide();
-
             navListItems.click(function (e) {
                 e.preventDefault();
                 var $target = $($(this).attr('href')),
                     $item = $(this);
-
                 if (!$item.hasClass('disabled')) {
                     navListItems.removeClass('btn-success').addClass('btn-default');
                     $item.addClass('btn-success');
@@ -385,14 +377,12 @@
                     $target.find('input:eq(0)').focus();
                 }
             });
-
             allNextBtn.click(function () {
                 var curStep = $(this).closest(".setup-content"),
                     curStepBtn = curStep.attr("id"),
                     nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
                     curInputs = curStep.find("input[type='text'],input[type='url']"),
                     isValid = true;
-
                 $(".form-group").removeClass("has-error");
                 for (var i = 0; i < curInputs.length; i++) {
                     if (!curInputs[i].validity.valid) {
@@ -400,7 +390,6 @@
                         $(curInputs[i]).closest(".form-group").addClass("has-error");
                     }
                 }
-
                 if (isValid) nextStepWizard.removeAttr('disabled').trigger('click');
             });
 
